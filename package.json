@@ -10,8 +10,8 @@
     "strapi": "strapi"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.22.0"
+    "babel-eslint": "10.1.0",
+    "eslint": "7.22.0"
   },
   "dependencies": {
     "knex": "0.21.18",
