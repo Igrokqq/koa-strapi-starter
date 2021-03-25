@@ -15,7 +15,7 @@
       return `<option value=${company.id}>${company.title}</option>`;
     };
 
-    const addCompaniesHtml = (selects = [], html = '') => {
+    const appendCompaniesHtml = (selects = [], html = '') => {
       selects.forEach((select) => (select.innerHTML += html));
     };
 
@@ -32,7 +32,7 @@
     const onInit = function () {
       getCompanies()
         .then((companies) => {
-          addCompaniesHtml(selects, companies.map(transformToRow).join());
+          appendCompaniesHtml(selects, companies.map(transformToRow).join());
         })
         .catch(console.error);
     };

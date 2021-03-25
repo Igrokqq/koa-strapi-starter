@@ -12,6 +12,8 @@
       CREATE_COMPANY: '/companies',
       UPLOAD_COMPANY_LOGO: '/upload'
     };
+    const COMPANY_LOGO_FIELD_NAME = 'logo';
+    const COMPANY_CONTENT_TYPE = 'companies';
 
     const sendCreateCompanyRequest = function (payload) {
       const urlencoded = new URLSearchParams();
@@ -35,9 +37,10 @@
     };
     const sendUploadCompanyLogoRequest = function (payload) {
       const formData = new FormData();
-      formData.append('ref', 'companies');
+      formData.append('ref', COMPANY_CONTENT_TYPE);
       formData.append('refId', payload.refId);
       formData.append('files', payload.files);
+      formData.append('field', COMPANY_LOGO_FIELD_NAME);
 
       return fetch(ENDPOINTS.UPLOAD_COMPANY_LOGO, {
         method: 'POST',
@@ -64,7 +67,7 @@
         }).then(() => {
           window.location.reload();
         }).catch(console.error);
-      });
+      }).catch(console.error);
     };
 
     return {
