@@ -1,0 +1,16 @@
+version: "3"
+services:
+    mongo:
+     hostname: mongo
+     container_name: mongo
+     image: mongo:4.4
+     expose:
+       - 27017
+     ports:
+       - 27017:27017
+     volumes:
+       - 'mongo_data:/data/db:z'
+     restart: always
+volumes:
+  mongo_data:
+    external: true

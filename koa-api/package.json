@@ -1,0 +1,29 @@
+{
+  "name": "koa-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon"
+  },
+  "keywords": [
+    "koa",
+    "api",
+    "rest",
+    "starter"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "8.2.0",
+    "joi": "17.4.0",
+    "koa": "2.13.1",
+    "koa-body": "4.2.0",
+    "koa-route": "3.2.0",
+    "koa-static": "5.0.0",
+    "mongodb": "^3.6.5",
+    "mongoose": "5.12.2"
+  }
+}
