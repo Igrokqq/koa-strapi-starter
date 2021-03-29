@@ -4,4 +4,8 @@ module.exports = {
   create(body) {
     return CompanyModel.create(body);
   },
+
+  getAll() {
+    return CompanyModel.find().exec();
+  },
 };

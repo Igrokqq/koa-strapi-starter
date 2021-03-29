@@ -10,4 +10,8 @@ module.exports = {
 
     return company;
   },
+
+  getAll() {
+    return CompanyRepository.getAll();
+  },
 };

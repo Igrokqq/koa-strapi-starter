@@ -1,9 +1,11 @@
 const koaBody = require('koa-body');
 const koaSession = require('koa-session');
+const koaEjs = require('koa-ejs');
 const serve = require('koa-static');
 const { join } = require('path');
+const koaPassport = require('koa-passport');
 const allExceptionsFilter = require('../exceptions/filters/all-exceptions.filter');
-const passport = require('../components/auth/passport')(require('koa-passport'));
+const passport = require('../components/auth/passport')(koaPassport);
 
 const publicFolderPath = join(__dirname, '../', '../', 'public');
 
@@ -17,19 +19,26 @@ module.exports = {
       multipart: true,
       urlencoded: true,
     }));
+    koaEjs(app, {
+      root: join(__dirname, '../', 'views'),
+      layout: 'layouts/base',
+      viewExt: 'ejs',
+      cache: false,
+    });
     app.use(serve(publicFolderPath));
     /**
-         * @description init koaSessions
-         */
+     * @description init koaSessions
+     */
+    // eslint-disable-next-line no-param-reassign
     app.keys = [process.env.SESSION_SECRET];
     app.use(koaSession({}, app));
     /**
-         * @description init koaPassport
-         */
+     * @description init koaPassport
+     */
     passport.init(app);
     /**
-         * @description init all exceptions handler
-         */
+     * @description init all exceptions handler
+     */
     app.use(allExceptionsFilter);
   },
 };

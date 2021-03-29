@@ -27,4 +27,8 @@ module.exports = {
   getByEmail(email) {
     return StudentRepository.getByEmail(email);
   },
+
+  getById(id) {
+    return StudentRepository.getById(id);
+  },
 };

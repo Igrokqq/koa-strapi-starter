@@ -13,15 +13,20 @@ const authenticate = async function (email, password, done) {
     });
   }
 
-  const isPasswordCorrect = await bcrypt.compare(password, user.password);
+  try {
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
-  if (!isPasswordCorrect) {
+    if (!isPasswordCorrect) {
+      return done(null, false, {
+        message: 'Password is not equal to existing',
+      });
+    }
+    return done(null, user);
+  } catch (error) {
     return done(null, false, {
-      message: 'Password is not equal to existing',
+      message: 'password is not equal to existing',
     });
   }
-
-  return done(null, user);
 };
 
 module.exports = new LocalStrategy({

@@ -21,6 +21,7 @@
     "joi": "17.4.0",
     "koa": "2.13.1",
     "koa-body": "4.2.0",
+    "koa-ejs": "^4.3.0",
     "koa-passport": "4.1.4",
     "koa-route": "3.2.0",
     "koa-session": "6.1.0",

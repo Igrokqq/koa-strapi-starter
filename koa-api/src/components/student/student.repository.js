@@ -34,4 +34,10 @@ module.exports = {
       email,
     }).exec();
   },
+
+  getById(id) {
+    return StudentModel.findOne({
+      _id: UtilService.toObjectID(id),
+    });
+  },
 };
