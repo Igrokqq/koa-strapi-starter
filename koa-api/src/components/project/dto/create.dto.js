@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const schema = Joi.object({
   name: Joi.string().required(),
@@ -6,7 +6,7 @@ const schema = Joi.object({
 });
 
 module.exports = {
-    isValid(value) {
-        return schema.validate(value);
-    }
-}
+  isValid(value) {
+    return schema.validate(value);
+  },
+};

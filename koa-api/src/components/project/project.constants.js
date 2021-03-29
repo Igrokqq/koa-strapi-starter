@@ -1,4 +1,4 @@
 module.exports = {
-    modelName: 'ProjectModel',
-    collectionName: 'projects'
-}
+  modelName: 'ProjectModel',
+  collectionName: 'projects',
+};

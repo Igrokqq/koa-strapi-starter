@@ -1,5 +1,5 @@
 module.exports = {
   collectionName: 'students',
   modelName: 'StudentModel',
-  passwordSalt: 10
-}
+  passwordSalt: 10,
+};

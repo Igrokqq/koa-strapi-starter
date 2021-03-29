@@ -1,5 +1,9 @@
 module.exports = async (ctx, next) => {
     try {
+      // test
+      console.log(ctx.isAuthenticated())
+      console.log(ctx.isUnauthenticated())
+      //end test
       await next();
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {

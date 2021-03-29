@@ -10,7 +10,6 @@ module.exports = {
     },
 
     getAllByCompany({ companyId }) {
-        return StudentModel.find({
             company: UtilService.toObjectID(companyId)
         }).exec();
     },
@@ -26,6 +25,12 @@ module.exports = {
         return StudentModel.find({
             company: UtilService.toObjectID(companyId),
             isAdmin: false
+        }).exec();
+    },
+
+    getByEmail(email) {
+        return StudentModel.findOne({
+            email
         }).exec();
     }
 }

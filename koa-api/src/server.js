@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const Koa = require('koa');
+
 const app = new Koa();
 const GlobalConstants = require('./config/global.constants');
 const Router = require('./config/router');

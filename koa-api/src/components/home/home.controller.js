@@ -1,5 +1,5 @@
 module.exports = {
-    ping(ctx) {
-      ctx.body = 'Hello world!';
-    }
-}
+  ping(ctx) {
+    ctx.body = 'Hello world!';
+  },
+};

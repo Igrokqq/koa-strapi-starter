@@ -1,8 +1,8 @@
-const mongoConnection = require('../config/mongo');
+const mongoConnection = require('./mongo');
 
 module.exports = {
-    init() {
-        global.databases = {};
-        global.databases.mongo = mongoConnection;
-    }
-}
+  init() {
+    global.databases = {};
+    global.databases.mongo = mongoConnection;
+  },
+};
