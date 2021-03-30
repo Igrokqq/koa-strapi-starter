@@ -2,7 +2,7 @@ const ValidationException = require('../../../exceptions/validation.exception');
 
 const { validator } = global;
 const schema = validator.object({
-  companyId: validator.any().optional(),
+  companyId: validator.objectId().required(),
 });
 
 module.exports = {

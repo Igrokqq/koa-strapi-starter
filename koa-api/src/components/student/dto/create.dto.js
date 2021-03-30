@@ -4,7 +4,7 @@ const { validator } = global;
 const schema = validator.object({
   name: validator.string().required(),
   surname: validator.string().required(),
-  company: validator.any().required(),
+  company: validator.objectId().required(),
   isAdmin: validator.boolean().optional(),
   password: validator.string().required().min(8).max(64),
   email: validator.string().email().required(),
