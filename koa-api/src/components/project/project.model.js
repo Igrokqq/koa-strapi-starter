@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const { Types, Schema } = require('mongoose');
 const { collectionName, modelName } = require('./project.constants');
 
@@ -11,6 +12,16 @@ const ProjectSchema = new Schema(
     company: {
       type: Types.ObjectId,
       required: true,
+    },
+    published_at: {
+      type: Date,
+      required: false,
+      default: null,
+      select: false,
+    },
+    __v: {
+      type: Number,
+      select: false,
     },
   },
   {

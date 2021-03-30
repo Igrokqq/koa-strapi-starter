@@ -1,40 +1,46 @@
 <form method="POST" action="/sign-up">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="bot@gmail.com" required>
+    <div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="bot@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" name="password" type="password" placeholder="********" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" id="name" name="name" type="text" placeholder="Valera" required>
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Surname</label>
+            <input class="form-control" id="surname" name="surname" type="text" placeholder="Placeholder" required>
+        </div>
+
+        <div class="form-group">
+        <label for="company">Company</label>
+        <select class="form-control" id="company" name="company" required>
+            <option selected>Choose company</option>
+            <% data.companies.forEach((company) => { %>
+            <option value="<%= company._id %>"><%= company.title %></option>
+            <% }) %>
+        </select>
+        </div>
+
+        <div class="form-group d-flex flex-column">
+            <label for="isAdmin">Is Admin</label>
+            <input id="isAdmin" type="checkbox" name="isAdmin">
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn btn-primary w-25">Register</button>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" id="password" name="password" type="password" placeholder="********" required>
-    </div>
-
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control" id="name" name="name" type="text" placeholder="Valera" required>
-    </div>
-
-    <div class="form-group">
-        <label for="surname">Surname</label>
-        <input class="form-control" id="surname" name="surname" type="text" placeholder="Placeholder" required>
-    </div>
-
-    <div class="form-group">
-       <label for="company">Company</label>
-       <select class="form-control" id="company" name="company" required>
-           <option selected>Choose company</option>
-           <% data.companies.forEach((company) => { %>
-           <option value="<%= company._id %>"><%= company.title %></option>
-           <% }) %>
-       </select>
-    </div>
-
-    <div class="form-group d-flex flex-column">
-        <label for="isAdmin">Is Admin</label>
-        <input id="isAdmin" type="checkbox" name="isAdmin">
-    </div>
-
-    <div class="d-flex justify-content-center align-items-center">
-        <button type="submit" class="btn btn-primary w-25">Register</button>
+    <div class="w-100 text-right">
+        <a href="/login" role="navigation" title="create account">Sign In</a>
     </div>
   </form>

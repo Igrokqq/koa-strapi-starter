@@ -1,15 +1,21 @@
 <form method="POST" action="/login">
-  <div class="form-group">
-      <label for="email">Email</label>
-      <input class="form-control" name="email" type="text" placeholder="valera@gmail.com" required>
-  </div>
+    <div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" name="email" type="text" placeholder="valera@gmail.com" required>
+        </div>
 
-  <div class="form-group">
-      <label for="password">Password</label>
-      <input class="form-control" name="password" type="password" placeholder="********" required>
-  </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" name="password" type="password" placeholder="********" required>
+        </div>
 
-  <div class="d-flex justify-content-center align-items-center">
-      <button type="submit" class="btn btn-primary w-25">Login</button>
-  </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn btn-primary w-25">Login</button>
+        </div>
+    </div>
+
+   <div class="w-100 text-right">
+       <a href="/sign-up" role="navigation" title="create account">Sign Up</a>
+   </div>
 </form>

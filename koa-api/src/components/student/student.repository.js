@@ -12,32 +12,32 @@ module.exports = {
   getAllByCompany({ companyId }) {
     return StudentModel.find({
       company: UtilService.toObjectID(companyId),
-    }).exec();
+    }).lean().exec();
   },
 
   getCompanyAdmins({ companyId }) {
     return StudentModel.find({
       company: UtilService.toObjectID(companyId),
       isAdmin: true,
-    }).exec();
+    }).lean().exec();
   },
 
   getCompanySimpleStudents({ companyId }) {
     return StudentModel.find({
       company: UtilService.toObjectID(companyId),
       isAdmin: false,
-    }).exec();
+    }).lean().exec();
   },
 
   getByEmail(email) {
     return StudentModel.findOne({
       email,
-    }).exec();
+    }).lean().exec();
   },
 
   getById(id) {
     return StudentModel.findOne({
       _id: UtilService.toObjectID(id),
-    });
+    }).lean().exec();
   },
 };

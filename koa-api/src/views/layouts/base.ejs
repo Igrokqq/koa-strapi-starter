@@ -12,14 +12,20 @@
     <title>Hello, world!</title>
 </head>
 <body>
-    <script src="./js/globals.js"></script>
-
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
-            Bootstrap 4
+      <div>
+        <a class="navbar-brand" href="/">
+          <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+            class="d-inline-block align-top" alt="">
+            App
         </a>
+      </div>
+      <% if (this.user) { %>
+        <div class="d-flex">
+            <div class="mr-3"><a href="/profile" title="go profile" role="navigation">Profile</a></div>
+            <div><a href="/logout" title="logout" role="button">Logout</a></div>
+        </div>
+      <% } %>
     </nav>
 
     <main class="container py-5">
@@ -37,7 +43,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <!-- BOOTSTRAP CUSTOM SCRIPTS -->
-    <script src="./js/bootstrap.js"></script>
 </body>
 </html>

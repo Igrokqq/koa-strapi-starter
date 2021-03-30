@@ -1,15 +1,26 @@
-const ValidationException = require('../../exceptions/validation.exception');
 const createStudentDto = require('./dto/create.dto');
 const getAllByCompanyDto = require('./dto/get-all-by-company.dto');
 const StudentService = require('./student.service');
 
 module.exports = {
-  async create(ctx) {
-    const { error } = createStudentDto.isValid(ctx.request.body);
+  async profilePage(ctx) {
+    await ctx.render('profile/index', {
+      data: {
+        user: ctx.state.user,
+      },
+    });
+  },
 
-    if (error) {
-      throw new ValidationException(error);
-    }
+  async profileCompanyDetailsPage(ctx) {
+    await ctx.render('profile/company/details', {
+      data: {
+        user: ctx.state.user,
+      },
+    });
+  },
+
+  async create(ctx) {
+    createStudentDto.validate(ctx.request.body);
 
     ctx.response.body = await StudentService.create(ctx.request.body);
   },
@@ -18,11 +29,7 @@ module.exports = {
     const params = {
       companyId,
     };
-    const { error } = getAllByCompanyDto.isValid(params);
-
-    if (error) {
-      throw new ValidationException(error);
-    }
+    getAllByCompanyDto.validate(params);
 
     ctx.response.body = await StudentService.getAllByCompany(params);
   },
@@ -31,11 +38,7 @@ module.exports = {
     const params = {
       companyId,
     };
-    const { error } = getAllByCompanyDto.isValid(params);
-
-    if (error) {
-      throw new ValidationException(error);
-    }
+    getAllByCompanyDto.validate(params);
 
     ctx.response.body = await StudentService.getCompanyAdmins(params);
   },
@@ -44,11 +47,7 @@ module.exports = {
     const params = {
       companyId,
     };
-    const { error } = getAllByCompanyDto.isValid(params);
-
-    if (error) {
-      throw new ValidationException(error);
-    }
+    getAllByCompanyDto.validate(params);
 
     ctx.response.body = await StudentService.getCompanySimpleStudents(params);
   },

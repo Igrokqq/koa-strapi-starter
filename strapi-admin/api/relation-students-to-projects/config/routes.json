@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/relation-students-to-projects",
+      "handler": "relation-students-to-projects.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/relation-students-to-projects/count",
+      "handler": "relation-students-to-projects.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/relation-students-to-projects/:id",
+      "handler": "relation-students-to-projects.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/relation-students-to-projects",
+      "handler": "relation-students-to-projects.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/relation-students-to-projects/:id",
+      "handler": "relation-students-to-projects.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/relation-students-to-projects/:id",
+      "handler": "relation-students-to-projects.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -4,9 +4,9 @@
  */
 class ValidationException extends Error {
   /**
-     * @constructor
-     * @param {object} message
-     */
+   * @constructor
+   * @param {object} message
+   */
   constructor(message) {
     super();
     this.message = message;

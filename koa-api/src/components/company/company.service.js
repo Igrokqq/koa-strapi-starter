@@ -14,4 +14,8 @@ module.exports = {
   getAll() {
     return CompanyRepository.getAll();
   },
+
+  getById(id) {
+    return CompanyRepository.getById(id);
+  },
 };

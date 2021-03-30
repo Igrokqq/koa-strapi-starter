@@ -23,6 +23,15 @@ const CompanySchema = new Schema(
       required: true,
       default: null,
     },
+    published_at: {
+      type: Date,
+      required: false,
+      default: null,
+    },
+    __v: {
+      type: Number,
+      select: false,
+    },
   },
   {
     collection: 'companies',

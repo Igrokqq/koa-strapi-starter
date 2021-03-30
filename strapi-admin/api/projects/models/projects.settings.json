@@ -2,11 +2,15 @@
   "kind": "collectionType",
   "collectionName": "projects",
   "info": {
-    "name": "Projects"
+    "name": "Projects",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "draftAndPublish": true
   },
   "attributes": {

@@ -1,12 +1,17 @@
-const Joi = require('joi');
+const ValidationException = require('../../../exceptions/validation.exception');
 
-const schema = Joi.object({
-  name: Joi.string().required(),
-  company: Joi.any().required(), // @todo create ObjectId plugin for validation with joi
+const { validator } = global;
+const schema = validator.object({
+  name: validator.string().required(),
+  company: validator.objectId().required(),
 });
 
 module.exports = {
-  isValid(value) {
-    return schema.validate(value);
+  validate(value) {
+    const { error } = schema.validate(value);
+
+    if (error) {
+      throw new ValidationException(error);
+    }
   },
 };

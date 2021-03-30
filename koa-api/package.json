@@ -22,10 +22,12 @@
     "koa": "2.13.1",
     "koa-body": "4.2.0",
     "koa-ejs": "^4.3.0",
+    "koa-flash": "^1.0.0",
     "koa-passport": "4.1.4",
     "koa-route": "3.2.0",
     "koa-session": "6.1.0",
     "koa-static": "5.0.0",
+    "moment": "^2.29.1",
     "mongodb": "3.6.5",
     "mongoose": "5.12.2",
     "passport-local": "1.0.0"

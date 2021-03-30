@@ -1,27 +1,34 @@
 const localStrategy = require('./strategies/local.strategy');
 
 const StudentService = () => require('../student/student.service');
+const CompanyService = () => require('../company/company.service');
 
 module.exports = function (koaPassport) {
   return {
     init(app) {
       const studentService = StudentService();
+      const companyService = CompanyService();
 
       app.use(koaPassport.initialize());
       app.use(koaPassport.session());
-      koaPassport.serializeUser((user, done) => {
-        done(null, user);
+      koaPassport.serializeUser((student, done) => {
+        done(null, student);
       });
       koaPassport.deserializeUser(async ({ _id }, done) => {
-        const user = await studentService.getById(_id);
+        const student = await studentService.getById(_id);
 
-        if (!user) {
+        if (!student) {
           return done(null, false, {
             message: 'User does not exist',
           });
         }
 
-        return done(null, user);
+        const studentCompany = await companyService.getById(student.company);
+
+        return done(null, {
+          ...student,
+          company: studentCompany,
+        });
       });
       koaPassport.use(localStrategy);
     },

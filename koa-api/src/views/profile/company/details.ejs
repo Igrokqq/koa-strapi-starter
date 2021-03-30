@@ -1,0 +1,42 @@
+<link href="/css/profile/company-details.css" rel="stylesheet" />
+
+<% const dateFormat = 'DD.MM.YY hh:mm:ss' %>
+<div class="card">
+    <div class="card-header">
+        <a href="/profile" title="profile" role="navigation">Back</a>
+    </div>
+
+    <div class="card-body">
+        <% if (data.user) { %>
+        <% const company = data.user.company || {} %>
+        <div class="form-group">
+            <div>ID</div>
+            <div><%= company._id %></div>
+        </div>
+        <div class="form-group">
+            <div>Logo</div>
+            <div id="logo" style="background-image: url('<%= company.logo %>')"></div>
+        </div>
+        <div class="form-group">
+            <div>Title</div>
+            <div><%= company.title %></div>
+        </div>
+        <div class="form-group">
+            <div>Description</div>
+            <div><%= company.description %></div>
+        </div>
+        <div class="form-group">
+            <div>Address</div>
+            <div><%= company.address %></div>
+        </div>
+        <div class="form-group">
+            <div>CreatedAt</div>
+            <div><%= this.moment(company.createdAt).format(dateFormat) %></div>
+        </div>
+        <div class="form-group">
+            <div>updatedAt</div>
+            <div><%= this.moment(company.updatedAt).format(dateFormat) %></div>
+        </div>
+        <% } %>
+    </div>
+</div>

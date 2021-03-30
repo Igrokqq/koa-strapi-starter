@@ -6,7 +6,10 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "draftAndPublish": true
   },
   "attributes": {
@@ -24,14 +27,7 @@
       "required": true
     },
     "logo": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files",
-        "images",
-        "videos"
-      ],
-      "plugin": "upload",
+      "type": "string",
       "required": true
     }
   }

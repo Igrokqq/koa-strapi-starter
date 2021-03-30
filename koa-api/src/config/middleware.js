@@ -1,6 +1,7 @@
 const koaBody = require('koa-body');
 const koaSession = require('koa-session');
 const koaEjs = require('koa-ejs');
+const koaFlash = require('koa-flash');
 const serve = require('koa-static');
 const { join } = require('path');
 const koaPassport = require('koa-passport');
@@ -32,6 +33,11 @@ module.exports = {
     // eslint-disable-next-line no-param-reassign
     app.keys = [process.env.SESSION_SECRET];
     app.use(koaSession({}, app));
+    app.use(koaFlash({
+      defaultValue: {
+        errors: [],
+      },
+    }));
     /**
      * @description init koaPassport
      */

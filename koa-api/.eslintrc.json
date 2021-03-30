@@ -19,6 +19,7 @@
         "no-shadow": "off",
         "func-names": "off",
         "global-require": "off",
-        "max-len": ["error", 150]
+        "max-len": ["error", 150],
+        "prefer-arrow-callback": "off"
     }
 }

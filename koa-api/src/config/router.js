@@ -1,8 +1,9 @@
-const router = require('koa-route');
+const router = require('koa-route'); // @todo replace by koa-router library
 const koaPassport = require('koa-passport');
 const authConstants = require('../components/auth/auth.constants');
-const onlyAuthenticatedGuard = require('../components/auth/guards/only-authenticated.guard.js');
-const withMiddlewares = require('../utils/with-middlewares');
+const onlyAuthenticatedGuard = require('../components/auth/guards/only-authenticated.guard');
+const onlyUnauthenticatedGuard = require('../components/auth/guards/only-unauthenticated.guard');
+const { withMiddlewares } = require('../shared/util.service');
 /**
  *
  * Every controller should be lazy because when we load him he pull
@@ -13,6 +14,7 @@ const CompanyController = () => require('../components/company/company.controlle
 const StudentController = () => require('../components/student/student.controller');
 const ProjectController = () => require('../components/project/project.controller');
 const AuthController = () => require('../components/auth/auth.controller');
+const RelationStudentToProjectController = () => require('../components/relation-student-to-project/relation-student-to-project.controller');
 
 const Router = {
   init(app) {
@@ -21,6 +23,7 @@ const Router = {
     const studentController = StudentController();
     const projectController = ProjectController();
     const authController = AuthController();
+    const relationStudentToProjectController = RelationStudentToProjectController();
 
     /**
      * @description Home
@@ -34,24 +37,32 @@ const Router = {
       successRedirect: '/',
       failureRedirect: '/login',
     })));
-    app.use(router.get('/login', authController.signInPage));
-    app.use(router.get('/sign-up', authController.signUpPage));
-    app.use(router.post('/sign-up', authController.signUp));
+    app.use(router.get('/login', withMiddlewares([onlyUnauthenticatedGuard], authController.signInPage)));
+    app.use(router.get('/sign-up', withMiddlewares([onlyUnauthenticatedGuard], authController.signUpPage)));
+    app.use(router.post('/sign-up', withMiddlewares([onlyUnauthenticatedGuard], authController.signUp)));
+    app.use(router.get('/logout', withMiddlewares([onlyAuthenticatedGuard], authController.logout)));
     /**
      * @description Companies
      */
-    app.use(router.post('/companies', companyController.create));
+    app.use(router.post('/companies', withMiddlewares([onlyAuthenticatedGuard], companyController.create)));
     /**
      * @description Students
      */
-    app.use(router.post('/students', studentController.create));
-    app.use(router.get('/students/company/:companyId', studentController.getAllByCompany));
-    app.use(router.get('/students/admins/company/:companyId', studentController.getCompanyAdmins));
-    app.use(router.get('/students/simple/company/:companyId', studentController.getCompanySimpleStudents));
+    app.use(router.post('/students', withMiddlewares([onlyAuthenticatedGuard], studentController.create)));
+    app.use(router.get('/students/company/:companyId', withMiddlewares([onlyAuthenticatedGuard], studentController.getAllByCompany)));
+    app.use(router.get('/students/admins/company/:companyId', withMiddlewares([onlyAuthenticatedGuard], studentController.getCompanyAdmins)));
+    app.use(router.get('/students/simple/company/:companyId', withMiddlewares([onlyAuthenticatedGuard], studentController.getCompanySimpleStudents)));
     /**
      * @description Projects
      */
     app.use(router.post('/projects', projectController.create));
+    app.use(router.get('/projects/:companyId', projectController.getAllByCompany));
+    app.use(router.post('/projects/join', relationStudentToProjectController.create));
+    /**
+     * @description Student Profile
+     */
+    app.use(router.get('/profile', withMiddlewares([onlyAuthenticatedGuard], studentController.profilePage)));
+    app.use(router.get('/profile/company/details', withMiddlewares([onlyAuthenticatedGuard], studentController.profileCompanyDetailsPage)));
   },
 };
 module.exports = Router;

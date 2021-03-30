@@ -2,7 +2,6 @@ const CompanyService = require('../company/company.service');
 const StudentService = require('../student/student.service');
 const authConstants = require('./auth.constants');
 const createStudentDto = require('../student/dto/create.dto');
-const ValidationException = require('../../exceptions/validation.exception');
 
 module.exports = {
   async signUpPage(ctx) {
@@ -21,14 +20,16 @@ module.exports = {
   },
 
   async signUp(ctx) {
-    const { error } = createStudentDto.isValid(ctx.request.body);
-
-    if (error) {
-      throw new ValidationException(error);
-    }
+    createStudentDto.validate(ctx.request.body);
 
     await StudentService.create(ctx.request.body);
 
-    ctx.redirect('/');
+    ctx.redirect('/login');
+  },
+
+  logout(ctx) {
+    global.user = null;
+    ctx.logout();
+    ctx.redirect('/login');
   },
 };

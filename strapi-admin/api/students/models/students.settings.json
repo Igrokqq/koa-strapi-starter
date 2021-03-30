@@ -7,7 +7,10 @@
   },
   "options": {
     "increments": true,
-    "timestamps": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
     "draftAndPublish": true
   },
   "attributes": {
@@ -20,7 +23,7 @@
       "required": true
     },
     "company": {
-      "model": "companies"
+      "type": "string"
     },
     "isAdmin": {
       "type": "boolean",

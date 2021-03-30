@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "relation_students_to_projects",
+  "info": {
+    "name": "RelationStudentsToProjects"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "student": {
+      "model": "students"
+    },
+    "project": {
+      "model": "projects"
+    }
+  }
+}

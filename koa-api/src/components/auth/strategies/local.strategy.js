@@ -21,6 +21,9 @@ const authenticate = async function (email, password, done) {
         message: 'Password is not equal to existing',
       });
     }
+    // @todo find a way to get rid of global.user = user statement here.
+    global.user = user;
+
     return done(null, user);
   } catch (error) {
     return done(null, false, {

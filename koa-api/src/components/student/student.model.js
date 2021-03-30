@@ -33,6 +33,16 @@ const StudentSchema = new Schema(
       required: false,
       default: false,
     },
+    published_at: {
+      type: Date,
+      required: false,
+      default: null,
+      select: false,
+    },
+    __v: {
+      type: Number,
+      select: false,
+    },
   },
   {
     collection: collectionName,
